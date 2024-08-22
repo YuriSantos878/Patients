@@ -1,0 +1,33 @@
+@page
+@model build_project_2024.Pages.Patients.IndexModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Adress</th>
+            <th>Phone</th>
+            <th># of Patients</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hospital in Model.Hospitals)
+        {
+            <tr>
+                <td>@hospital.HospitalName</td>
+                <td>@hospital.State</td>
+                <td>@hospital.City</td>
+                <td>@hospital.Adress</td>
+                <td>@hospital.Phone</td>
+                <td>
+                    <a asp-page="/Patient/Index" asp-route-hospitalId="@hospital.Id">
+                        @hospital.PatientsCount
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
